@@ -1,0 +1,28 @@
+<button class="btn-success btn my-3 d-block mx-auto" (click)="getAllUser()">
+  GET
+</button>
+<div class="container overflow-x-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <td><b>id</b></td>
+        <td><b>name</b></td>
+        <td><b>username</b></td>
+        <td><b>email</b></td>
+        <td><b>Address</b></td>
+      </tr>
+    </thead>
+    @for (item of userlist; track item.id) {
+    <tr>
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.username }}</td>
+      <td>{{ item.email }}</td>
+      <td>
+        {{ item.address.street }}, {{ item.address.suite }},
+        {{ item.address.city }}, Zipcode-{{ item.address.zipcode }}
+      </td>
+    </tr>
+    }
+  </table>
+</div>

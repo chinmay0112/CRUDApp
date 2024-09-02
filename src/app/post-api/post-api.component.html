@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <input
+        [(ngModel)]="postObj.title"
+        type="text"
+        class="form-control"
+        placeholder="Enter title"
+      />
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 my-small-4">
+      <input
+        type="text"
+        [(ngModel)]="postObj.body"
+        class="form-control"
+        placeholder="Enter body"
+      />
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <input
+        type="text"
+        [(ngModel)]="postObj.userId"
+        class="form-control"
+        placeholder="Enter userId"
+      />
+    </div>
+    <div class="col-12">
+      @if (postObj.id === 0) {
+      <button (click)="onSubmit()" class="btn btn-primary my-3 mx-auto d-block">
+        Submit
+      </button>
+      }@else{
+      <button
+        (click)="onUpdate()"
+        class="btn btn-info text-white my-3 mx-auto d-block"
+      >
+        Update
+      </button>
+
+      }
+    </div>
+  </div>
+</div>
+<div class="container overflow-x-auto">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>body</td>
+        <td>Title</td>
+        <td>UserId</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of myData ; track $index) {
+      <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>{{ item.body }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.userId }}</td>
+        <td>
+          <button
+            (click)="onEdit(item)"
+            class="btn btn-warning text-white my-1"
+          >
+            Edit
+          </button>
+
+          <button
+            (click)="onDelete(item.id, item.title, item.body)"
+            class="btn btn-danger text-white my-1"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
